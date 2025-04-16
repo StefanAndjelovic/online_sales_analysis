@@ -20,7 +20,14 @@ class ProductManager:
         """Izračunava ukupnu vrednost svih proizvoda."""
         total = sum(product.price * product.quantity for product in self.products)
         return f"Ukupna vrednost svih proizvoda: {total} RSD"
-
+    
+    def remove_product(self, product_name):
+        """Uklanja proizvod prema njegovom imenu."""
+        for product in self.products:
+            if product.name == product_name:
+                self.products.remove(product)
+                return f"Proizvod '{product_name}' uspešno uklonjen."
+        return f"Proizvod '{product_name}' nije pronađen."
 # Primer korišćenja
 if __name__ == "__main__":
     manager = ProductManager()
